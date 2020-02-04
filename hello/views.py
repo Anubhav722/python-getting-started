@@ -5,7 +5,14 @@ from .models import Greeting
 
 import requests
 
+import os
+
 # Create your views here.
+
+def index(request):
+    times = int(os.environ.get('TIMES',3))
+    return HttpResponse('Hello! ' * times)
+
 def index(request):
     r = requests.get('http://httpbin.org/status/418')
     print (r.text)
